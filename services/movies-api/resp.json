@@ -1,0 +1,59 @@
+{
+    "cluster": {
+        "name": "dev_eks_cluster",
+        "arn": "arn:aws:eks:eu-central-1:304135002085:cluster/dev_eks_cluster",
+        "createdAt": "2023-08-01T12:57:00.272000+03:00",
+        "version": "1.27",
+        "endpoint": "https://1A1128DABC6381BE945102D5A6B66561.gr7.eu-central-1.eks.amazonaws.com",
+        "roleArn": "arn:aws:iam::304135002085:role/iam_for_eks",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-020fbc3042f4bd958",
+                "subnet-0aca8f65c177520be",
+                "subnet-0c39b6a3cc280677d"
+            ],
+            "securityGroupIds": [],
+            "clusterSecurityGroupId": "sg-0c09190384b918c5d",
+            "vpcId": "vpc-021b3a53147cbaf4a",
+            "endpointPublicAccess": true,
+            "endpointPrivateAccess": false,
+            "publicAccessCidrs": [
+                "0.0.0.0/0"
+            ]
+        },
+        "kubernetesNetworkConfig": {
+            "serviceIpv4Cidr": "172.20.0.0/16",
+            "ipFamily": "ipv4"
+        },
+        "logging": {
+            "clusterLogging": [
+                {
+                    "types": [
+                        "api",
+                        "audit"
+                    ],
+                    "enabled": true
+                },
+                {
+                    "types": [
+                        "authenticator",
+                        "controllerManager",
+                        "scheduler"
+                    ],
+                    "enabled": false
+                }
+            ]
+        },
+        "identity": {
+            "oidc": {
+                "issuer": "https://oidc.eks.eu-central-1.amazonaws.com/id/1A1128DABC6381BE945102D5A6B66561"
+            }
+        },
+        "status": "ACTIVE",
+        "certificateAuthority": {
+            "data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1EZ3dNVEV3TURFek4xb1hEVE16TURjeU9URXdNREV6TjFvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTHRUCnl6Qk9HMTFkaVZwM3dBY2FmQURNRE9yOTN1QnNIS0JWbXZOVjFtVDl6V3ZPT1lpcTQ3akVyZXpxODl4Z01CdDcKbkEydU5CWXpIUmpWbFZ0bmtLUjFDV2xTdEFqaGJBblJWUUZWQ3hRbmd2RjlQekV6clJycEhGYXB5d3h1V001SwpHcHlXNEVEL3N6Wjh0ODBjQTAyVFBtaVVjbHVHLzkzZGVZMUxuN2kzK0RWS1U5TS9WRWlabThoRmVQQzMxOU1LCnBRSWtmaEpsTk1RU0hiWHl5Z2YwUEhHTkJwck5USEpNVDJGNUtRNG9vc1NhcERSTlhyOEx6VWtXbDQvd21CWmoKVzNDelBKaDB5WDF1TEp5eFJKWS9OZWpNY3R4bHdBN0gzRGd3OEtWUDRmZ0k4ZDdiSm96SDMyUmNCZjJSZ2dxLwplN0REeXcxTVlFYlFEalhUbjlzQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZDRCttMHJlN2FRNys5eGdFZ1JUcE5wZGdpSkdNQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBTGtiL0tVVk5qUkIrazV4R2hPUAplZS9BalkrRVMyNDUzeWd6TjNrRHBFc0dwalNuaUJqTUlMaUxpa0hVaTdZL09WZU5lRDl4cmVMc3o3OW91OEdvClhZU0Q2a3l2NmhvVkIzR3BibDVsRDhVM1BxbGNWWi9Id2FuWmNGLzI3TWhxbFhvMXJUa2QwOGt6aFV2TW9pcHQKd2RyTExMSENCZ0pkZUh4YU0wNkFabDN3VVloeSs4d3FXK0FHdmYwUTFjUWM5V24zOFFhYjhuZnFmRXA3U213bwpKeFhQTWdmeU01ZTlpTm5KREdlVjRybldmaTZtRTZxbGlFcVJObmZVbjBFbldkUGIzeHVHREEzV0Rrb1JnZVB0CjhKUjM3a0Z0ODhVLzRLYXNNU2x1TDc1QlptMmYvRDlOem9pakpaVi9tMm5QcGpodWxhQTM4bThtQUovVlFTSkIKbHhzPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+        },
+        "platformVersion": "eks.3",
+        "tags": {}
+    }
+}

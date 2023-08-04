@@ -1,0 +1,7 @@
+boto3==1.28.15
+botocore==1.31.19
+mysql-connector-python==8.1.0
+urllib3==1.26.6
+cachetools==5.3.1
+redis==3.5.3
+redis-py-cluster==2.1.3

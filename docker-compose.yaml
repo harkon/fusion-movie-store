@@ -1,0 +1,82 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7.0.3-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - cache:/data
+    networks:
+      home:
+
+  mysql-server:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=S3cret
+      - MYSQL_PASSWORD=An0thrS3crt
+      - MYSQL_USER=dbuser
+      - MYSQL_DATABASE=moviesdb
+    networks:
+      home:
+
+  process_movie_data:
+    depends_on:
+      - redis
+      - mysql-server
+    build:
+      context: ./lambdas/process_movie_data
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql-server
+      DB_NAME: moviesdb
+      DB_USER: dbuser
+      DB_PASSWORD: An0thrS3crt
+      AWS_DEFAULT_REGION: eu-central-1
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - ~/.aws:/root/.aws:ro
+      - ./lambdas/process_movie_data/lambda_function.py:/var/task/lambda_function.py
+    ports:
+      - "${PROCESS_LAMBDA_PORT:-3001}:8080"
+    networks:
+      home:
+
+  movies_api:
+    depends_on:
+      - redis
+      - mysql-server
+    build:
+      context: ./services/movies-api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DB_HOST: mysql-server
+      DB_NAME: moviesdb
+      DB_URL: jdbc:mysql://mysql-server:3306/moviesdb?logger=com.mysql.cj.log.StandardLogger&profileSQL=true
+      DB_USERNAME: dbuser
+      DB_PASSWORD: An0thrS3crt
+      AWS_DEFAULT_REGION: eu-central-1
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+      ENVIRONMENT: local
+    ports:
+      - "${MOVIES_API_PORT:-9000}:8080"
+    networks:
+      home:
+networks:
+  home:
+    name: "lambda_network"
+volumes:
+  cache:
+    driver: local
